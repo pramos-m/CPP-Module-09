@@ -6,37 +6,32 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:33:48 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/30 18:37:25 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:27:04 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "BitcoinExchange.hpp"
+#include "PmergeMe.hpp"
 
-int main( int ac, char **av )
+int main( int ac, char **argv )
 {
-	std::string	file;
+	int	exitStatus;
 
+	exitStatus = 0;
 	if ( ac < 2 )
 	{
-		std::cerr << "Too few arguments, needed at least one input file" << std::endl;
+		std::cerr << "Too few numbers to sort" << std::endl;
 		return ( 1 );
 	}
-	for ( int i = 1; i < ac; i++ )
+	try
 	{
-		file = av[ i ];
-		std::transform( file.begin(), file.end(), file.begin(), toupper );
-		std::cout << "[ " << file << " ]\n" << std::endl;
-		try
-		{
-			BitcoinExchange::exchange( av[ i ] );
-		}
-		catch ( const std::exception& e )
-		{
-			std::cerr << e.what() << std::endl;
-		}
-		std::cout << "\n\n" << std::endl;
-		file.clear();
+		PmergeMe::mergeInsertionSort( &argv[ 1 ] );
 	}
-	return ( 0 );
+	catch ( const std::exception& e )
+	{
+		std::cerr << e.what() << std::endl;
+		if ( strstr( e.what(), "Is not sorted" ) != NULL )
+			exitStatus = 1;
+	}
+	return ( exitStatus );
 }
