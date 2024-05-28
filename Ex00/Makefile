@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/28 16:51:19 by pramos-m          #+#    #+#              #
-#    Updated: 2024/05/28 16:51:20 by pramos-m         ###   ########.fr        #
+#    Created: 2024/05/28 16:51:54 by pramos-m          #+#    #+#              #
+#    Updated: 2024/05/28 19:34:27 by pramos-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ PINK		:=	\033[1;95m
 CIAN		:=	\033[1;96m
 
 #<--------------------------------->NAME<------------------------------------>#
-PRENAME		:=	"btc"
+PRENAME		:=	"PmergeMe"
 NAME		:=	$(shell echo $(PRENAME) | tr ' ' '_')
 
 #<--------------------------------->VARS<------------------------------------>#
@@ -60,7 +60,7 @@ FILES		:=	main BitcoinExchange
 
 #<---------------------------------->LANG<---------------------------------->#
 LANG		:=	CPP
-CFLAGS		:=	-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS		:=	-Wall -Wextra -Werror -g -fsanitize=address
 
 ifeq ($(LANG),C)
 	CC := cc
